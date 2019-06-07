@@ -1,12 +1,19 @@
-kanboard:
-  image: kanboard/kanboard
-  container_name: kanboard
-  ports:
-   - "<external>:80"
-  environment:
-    DATABASE_URL: "mysql://kanboard:<kanboard_password>@<mysql_host_ip>:3306/kanboard"
-  volumes:
-   - kanboard_data:/var/www/app/data
-   - kaboard_plugins:/var/www/app/plugins
-   - kanboard_ssl:/etc/nginx/ssl
-  restart: unless-stopped
+version: "3"
+services:
+  kanboard:
+    image: kanboard/kanboard
+    container_name: kanboard
+    ports:
+     - "<external>:80"
+    environment:
+      DATABASE_URL: "mysql://kanboard:<kanboard_password>@<mysql_host_ip>:3306/kanboard"
+    volumes:
+     - kanboard_data:/var/www/app/data
+     - kaboard_plugins:/var/www/app/plugins
+     - kanboard_ssl:/etc/nginx/ssl
+    restart: unless-stopped
+
+volumes:
+  kanboard_data:
+  kanboard_plugins:
+  kanboard_ssl:
