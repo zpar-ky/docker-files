@@ -1,3 +1,5 @@
+Note: These `docker-compose` files are NOT usable out of the box, I have replaced sensitive info from my build with placeholders that will have to be edited to suit your configuration.
+
 # Services
 
 ### [EtherCalc](https://ethercalc.org/)
