@@ -1,16 +1,22 @@
-fireflyiii:
-  image: jc5x/firefly-iii
-  container_name: fireflyiii
-  ports:
-    - "<external>:80"
-  environment:
-    FF_APP_ENV: local
-    FF_APP_KEY: <32_char_key>
-    FF_DB_HOST: <db_host_ip>:3306
-    FF_DB_NAME: firefly
-    FF_DB_USER: firefly
-    FF_DB_PASSWORD: <firefly_password>
-  volumes:
-    - firefly_iii_export:/var/www/firefly-iii/storage/export
-    - firefly_iii_upload:/var/www/firefly-iii/storage/upload
-  restart: unless-stopped
+version: "3"
+services:
+  fireflyiii:
+    image: jc5x/firefly-iii
+    container_name: fireflyiii
+    ports:
+      - "<external>:80"
+    environment:
+      FF_APP_ENV: local
+      FF_APP_KEY: <32_char_key>
+      FF_DB_HOST: <db_host_ip>:3306
+      FF_DB_NAME: firefly
+      FF_DB_USER: firefly
+      FF_DB_PASSWORD: <firefly_password>
+    volumes:
+      - firefly_iii_export:/var/www/firefly-iii/storage/export
+      - firefly_iii_upload:/var/www/firefly-iii/storage/upload
+    restart: unless-stopped
+
+volumes:
+  firefly_iii_export:
+  firefly_iii_upload:
