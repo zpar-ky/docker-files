@@ -1,8 +1,13 @@
-trilium:
-  image: zadam/trilium
-  container_name: trilium
-  ports:
-   - "<external>:8080"
-  volumes:
-   - trilium:/root/trilium-data
-  restart: unless-stopped
+version: "3"
+services:
+  trilium:
+    image: zadam/trilium
+    container_name: trilium
+    ports:
+     - "<external>:8080"
+    volumes:
+     - trilium:/root/trilium-data
+    restart: unless-stopped
+
+volumes:
+  trilium:
