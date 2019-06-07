@@ -1,0 +1,25 @@
+version: "3"
+services:
+  miniflux:
+    image: miniflux/miniflux:latest
+    container_name: miniflux
+    ports:
+      - "<external>:8080"
+    depends_on:
+      - mf-db
+    environment:
+      - DATABASE_URL=postgres://miniflux:<miniflux_password>@mf-db/miniflux?sslmode=disable
+    restart: unless-stopped
+
+  mf-db:
+    image: postgres:10.1
+    container_name: postgres
+    environment:
+      - POSTGRES_USER=miniflux
+      - POSTGRES_PASSWORD=<miniflux_password>
+    volumes:
+      - miniflux-db:/var/lib/postgresql/data
+    restart: unless-stopped
+
+volumes:
+    miniflux-db:

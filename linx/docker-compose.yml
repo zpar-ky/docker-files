@@ -1,0 +1,10 @@
+linx:
+  image: andreimarcu/linx-server
+  container_name: linx
+  ports:
+    - "<external>:8080"
+  volumes:
+    - linx-meta:/data/meta
+    - linx-files:/data/files
+  command: --maxexpiry 0
+  restart: unless-stopped
